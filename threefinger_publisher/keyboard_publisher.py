@@ -7,6 +7,7 @@ from example_interfaces.msg import Float64MultiArray
 
 def handle_keyboard(publisher):
     STEP_INCREASE = 1000
+    STEP_INCREASE_LARGE = 10000
     motor1 = 0
     motor2 = 0
     motor3 = 0
@@ -22,21 +23,32 @@ def handle_keyboard(publisher):
         menu = input('Input the menu: ')
         if menu in ['1', '2', '3']:
             key = 0
-            while key not in ['0', '9'] :
-                key = input(f'Press z:+{STEP_INCREASE}, x:-{STEP_INCREASE}, 9 for menu: ')
-                if key == 'z':   # up arrow
-                    step = STEP_INCREASE
-                elif key == 'x': # down arrow
-                    step = - STEP_INCREASE
-                elif key == '9':
+            while key not in ['m'] :
+                key = input(f'Enter a value for motor {menu}, m for menu: ')
+
+                if key == 'm':
                     break
+                else:
+                    new_motor_value = int(key)
+                    if menu == '1':
+                        motor1 = new_motor_value
+                    elif menu == '2':
+                        motor2 = new_motor_value
+                    elif menu == '3':
+                        motor3 = new_motor_value
+                # if key == 'zz':   # up arrow
+                #     step = STEP_INCREASE_LARGE
+                # elif key == 'xx': # down arrow
+                #     step = - STEP_INCREASE_LARGE
+                # elif key == 'z':   # up arrow
+                #     step = STEP_INCREASE
+                # elif key == 'x': # down arrow
+                #     step = - STEP_INCREASE
+                # elif key == '9':
+                #     break
+                # else:
+                #     step = 0
                 
-                if menu == '1':
-                    motor1 = motor1 + step
-                elif menu == '2':
-                    motor2 = motor2 + step
-                elif menu == '3':
-                    motor3 = motor3 + step
 
                 msg = Float64MultiArray(data = [motor1, motor2, motor3])
                 publisher.publish(msg)

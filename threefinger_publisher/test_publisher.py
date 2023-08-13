@@ -19,13 +19,13 @@ from std_msgs.msg import String
 from example_interfaces.msg import Float64MultiArray
 
 class MinimalPublisher(Node):
-    CLOSE_POSITION = [ -1000, -2000, -3000]
-    OPEN_POSITION = [ 15000, 12000, 40000]
+    CLOSE_POSITION = [ 50000, -250000, 1000]
+    OPEN_POSITION = [ -20000, 0, 0]
     isOpen = False
     def __init__(self):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Float64MultiArray, '/joint_angles', 10)
-        timer_period = 5  # seconds
+        timer_period = 10  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):
