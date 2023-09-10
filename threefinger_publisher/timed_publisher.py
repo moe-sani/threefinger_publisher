@@ -19,7 +19,7 @@ from std_msgs.msg import String
 from example_interfaces.msg import Float64MultiArray
 
 class MinimalPublisher(Node):
-    CLOSE_POSITION = [ 50000, -250000, 1000]
+    CLOSE_POSITION = [ 50000, -100000, 1000]
     OPEN_POSITION = [ -20000, 0, 0]
     isOpen = False
     def __init__(self):

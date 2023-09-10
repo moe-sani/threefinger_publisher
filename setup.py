@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'test_publisher = threefinger_publisher.test_publisher:main',
+        'timed_publisher = threefinger_publisher.timed_publisher:main',
         'keyboard_publisher = threefinger_publisher.keyboard_publisher:main',
 
         ],
