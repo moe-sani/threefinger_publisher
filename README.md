@@ -14,7 +14,7 @@ ros2 run threefinger_publisher keyboard_publisher
 ```
 or for test 
 ```
-ros2 run threefinger_publisher test_publisher
+ros2 run threefinger_publisher timed_publisher
 ```
 
 To see the data being published on a topic, use:
